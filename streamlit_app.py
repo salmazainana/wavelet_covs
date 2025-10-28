@@ -35,10 +35,10 @@ if "df_sleep" not in st.session_state:
 
 # Explicit navigation to force sidebar
 pg = st.navigation({
-    "Covariate Associations": [st.Page("pages/1_covariate_associations.py"), st.Page("pages/2_covariate_associations.py")],
+    "Covariate Associations": [st.Page("pages/1_covariate_associations.py"), st.Page("pages/2_covariates_volcano.py")],
     "Sleep-PRS Visualizations": [
-        st.Page("pages/2_sleep_prs_volcano.py"),
-        st.Page("pages/3_sleep_prs_heatmap.py"),
+        st.Page("pages/2_sleep_prs_heatmap.py"),
+        st.Page("pages/3_sleep_prs_volcano.py"),
         st.Page("pages/4_sleep_prs_top_n.py")
     ]
 }, position="sidebar")  # Ensure sidebar is used
