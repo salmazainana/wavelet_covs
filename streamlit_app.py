@@ -1,4 +1,3 @@
-
 # streamlit_app.py (main entry point)
 import streamlit as st
 import pandas as pd
@@ -32,15 +31,12 @@ if "df_sleep" not in st.session_state:
     df_sleep['abs_corr'] = df_sleep['correlation'].abs()
     df_sleep = df_sleep.replace([np.inf, -np.inf], np.nan).dropna(subset=['correlation', 'pval', 'neg_log10_p'])
     st.session_state.df_sleep = df_sleep
-
+    
 # Explicit navigation to force sidebar
 pg = st.navigation({
     "Covariate Associations": [st.Page("pages/1_covariate_associations.py"), st.Page("pages/2_covariates_volcano.py")],
     "Sleep-PRS Visualizations": [
-        st.Page("pages/3_sleep_prs_heatmap.py"),
-        st.Page("pages/4_sleep_prs_volcano.py"),
-        st.Page("pages/5_sleep_prs_top_n.py")
-    ]
+        st.Page("pages/4_sleep_prs_volcano.py")]
 }, position="sidebar")  # Ensure sidebar is used
 
 pg.run()
