@@ -7,8 +7,14 @@ import plotly.express as px
 import plotly.graph_objects as go
 from math import log10
 
-df_cov = st.session_state.df_cov
-
+df = st.session_state.df_cov
+# Preprocess: Add -log10(p_value), handle any inf/nan
+df['neg_log10_p'] = -np.log10(df['p_value'].clip(lower=1e-300)) # Avoid log(0) issues
+df = df.replace([np.inf, -np.inf], np.nan).dropna(subset=['r', 'p_value', 'neg_log10_p'])
+# Sidebar for global filters
+st.sidebar.header("Global Filters")
+p_max_global = st.sidebar.slider("Max p-value for all plots", min_value=1e-10, max_value=0.05, value=0.001, step=1e-5, format="%.10f")
+df_filtered = df[df['p_value'] < p_max_global]
 # Second Plot: Volcano-like Plot
 st.header("Plot 2: r vs -log10(p-value) Volcano Plot")
 st.write("Scatter plot of r vs -log10(p). Highlights overlap of top N by r and top N by -log10(p). Hover/click to see details.")
