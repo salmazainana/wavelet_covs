@@ -1,31 +1,14 @@
-# pages/1_covariate_associations.py
-import streamlit as st
-import pandas as pd
-import numpy as np
-import plotly.express as px
-
-st.title("Covariate ↔ Wavelet (top-N per feature)")
-
-# Use shared data
-df_cov = st.session_state.df_cov
-does these files appear in one of the page:
- 
 import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 from math import log10
-st.title("Wavelet-Covariate Associations Visualizer")
-st.write(
-    "This app visualizes associations from the wavelet energy data and the master.phe file. "
-    "It provides two interactive plots: one for r values by wavelet feature with covariate labels, "
-    "and a volcano plot for r vs -log10(p-value) with highlighted overlaps."
-)
-# Clean cache to ensure fresh data load
-st.cache_data.clear()
-csv_path = 'wavelet_master_covs_regressions_summary.csv'
-df = pd.read_csv(csv_path)
+
+st.title("Covariate ↔ Wavelet (top-N per feature)")
+
+# Use shared data
+df = st.session_state.df_cov
 # Preprocess: Add -log10(p_value), handle any inf/nan
 df['neg_log10_p'] = -np.log10(df['p_value'].clip(lower=1e-300)) # Avoid log(0) issues
 df = df.replace([np.inf, -np.inf], np.nan).dropna(subset=['r', 'p_value', 'neg_log10_p'])
