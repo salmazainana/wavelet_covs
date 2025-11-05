@@ -38,7 +38,7 @@ if "df_sleep" not in st.session_state:
 
 # --- LDSC results ---
 if "df_ldsc_sleep" not in st.session_state:
-    csv_path_ldsc = 'rg_summary_all.csv'  # adjust to your repo path
+    csv_path_ldsc = 'rg_summary_all.tsv'  # adjust to your repo path
     df_ldsc_sleep = pd.read_csv(csv_path_ldsc, sep="\t")
     df_ldsc_sleep['neg_log10_p'] = -np.log10(df_ldsc_sleep['p'].clip(lower=1e-300))
     df_ldsc_sleep['abs_rg'] = df_ldsc_sleep['rg'].abs()
