@@ -60,10 +60,10 @@ Volcano plot visualization for covariate associations.
 For each pair of sumstats.gz file $(y, x)$ of wavelet feature $y$ and sleep trait $x$:
 
 $$
-\hat{r}_g = \frac{\mathrm{cov}_g(y, x)}{\sqrt{\mathrm{h^2_x}_SNP \cdot \mathrm{h^2_y}_SNP}}
+\hat{r}_g = \frac{\mathrm{cov}_g(y, x)}{\sqrt{\mathrm{h^2_x}_{SNP} \cdot \mathrm{h^2_y}_{SNP}}}
 $$
 
-where $\mathrm{cov}_g$, \mathrm{h^2_x}_SNP and $\mathrm{h^2_y}_SNP$ are **genetic covariance** and **SNP-based heritabilties** of $x$ and $y$ respectively, estimated from summary statistics.
+where $\mathrm{cov}_g$, \mathrm{h^2_x}_{SNP} and $\mathrm{h^2_y}_{SNP}$ are **genetic covariance** and **SNP-based heritabilties** of $x$ and $y$ respectively, estimated from summary statistics.
 
 ### Visualization
 - Volcano plot: $\hat{r}_g$ vs $-\log_{10}(p)$
