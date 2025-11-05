@@ -104,7 +104,9 @@ $$
 $$
 
 3. Standardize residualized features to mean 0 and variance 1.
-
+$$
+\tilde{y} = \frac{\tilde{y} - mean(\tilde{y})}{std(\tilde{y})}
+$$
 ### Regression Model
 For each residualized and standardized $y$ and PRS $x$:
 
