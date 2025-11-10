@@ -8,10 +8,13 @@ st.title("Wavelet Visual Explorer")
 
 st.write("""
 Welcome! Use the sidebar to navigate to specific visualizations.
-- Data from: wavelet_master_covs_regressions_summary.csv, summary_wavelet_sleepPRS.csv, and LDSC results.
-- Adjust filters in each page as needed.
-""")
 
+- Data from: LDSC genetic correlations between sleep traits and wavelet energy features.
+- Adjust filters in the sidebar:
+    - **Maximum p-value:** Filter results by significance (default: 0.05).
+    - **Top N:** Select the number of top points to highlight based on effect size (|rg|) and significance (-log10(p)).
+        - The volcano plot will label the overlapping points that are in the top N of both criteria.
+""")
 # Clean cache to ensure fresh data load
 st.cache_data.clear()
 
