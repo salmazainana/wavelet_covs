@@ -5,11 +5,11 @@ import numpy as np
 
 st.title("LDSC Genetic Correlation Volcano Plot")
 
-df = st.session_state.df_ldsc_sleep
+df = st.session_state.df_ldsc_sleep.copy()
 
-# Preprocessing
-df['neg_log10_p'] = -np.log10(df['p'])
-df['abs_rg'] = abs(df['rg'])
+# # Preprocessing
+# df['neg_log10_p'] = -np.log10(df['p'])
+# df['abs_rg'] = abs(df['rg'])
 
 # Sidebar filters
 st.sidebar.header("Filters for LDSC Volcano")
