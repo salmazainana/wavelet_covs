@@ -19,22 +19,22 @@ st.cache_data.clear()
 # 🔹 Global data loading
 # ===============================
 
-# --- Covariate regressions ---
-if "df_cov" not in st.session_state:
-    csv_path_cov = '/data/wavelet_master_covs_regressions_summary.csv'
-    df_cov = pd.read_csv(csv_path_cov)
-    df_cov['neg_log10_p'] = -np.log10(df_cov['p_value'].clip(lower=1e-300))
-    df_cov = df_cov.replace([np.inf, -np.inf], np.nan).dropna(subset=['r', 'p_value', 'neg_log10_p'])
-    st.session_state.df_cov = df_cov
+# # --- Covariate regressions ---
+# if "df_cov" not in st.session_state:
+#     csv_path_cov = '/data/wavelet_master_covs_regressions_summary.csv'
+#     df_cov = pd.read_csv(csv_path_cov)
+#     df_cov['neg_log10_p'] = -np.log10(df_cov['p_value'].clip(lower=1e-300))
+#     df_cov = df_cov.replace([np.inf, -np.inf], np.nan).dropna(subset=['r', 'p_value', 'neg_log10_p'])
+#     st.session_state.df_cov = df_cov
 
-# --- Sleep-PRS regressions ---
-if "df_sleep" not in st.session_state:
-    csv_path_sleep = '/data/summary_wavelet_sleepPRS.csv'
-    df_sleep = pd.read_csv(csv_path_sleep)
-    df_sleep['neg_log10_p'] = -np.log10(df_sleep['pval'].clip(lower=1e-300))
-    df_sleep['abs_corr'] = df_sleep['correlation'].abs()
-    df_sleep = df_sleep.replace([np.inf, -np.inf], np.nan).dropna(subset=['correlation', 'pval', 'neg_log10_p'])
-    st.session_state.df_sleep = df_sleep
+# # --- Sleep-PRS regressions ---
+# if "df_sleep" not in st.session_state:
+#     csv_path_sleep = '/data/summary_wavelet_sleepPRS.csv'
+#     df_sleep = pd.read_csv(csv_path_sleep)
+#     df_sleep['neg_log10_p'] = -np.log10(df_sleep['pval'].clip(lower=1e-300))
+#     df_sleep['abs_corr'] = df_sleep['correlation'].abs()
+#     df_sleep = df_sleep.replace([np.inf, -np.inf], np.nan).dropna(subset=['correlation', 'pval', 'neg_log10_p'])
+#     st.session_state.df_sleep = df_sleep
 
 # --- LDSC results ---
 if "df_ldsc_sleep" not in st.session_state:
@@ -49,12 +49,12 @@ if "df_ldsc_sleep" not in st.session_state:
 # 🔹 Navigation setup
 # ===============================
 pg = st.navigation({
-    "Covariate Associations": [
-        st.Page("pages/1_covariate_associations.py"),
-        st.Page("pages/2_covariates_volcano.py")
-    ],
-    "Sleep-PRS Visualizations": [
-        st.Page("pages/4_sleep_prs_volcano.py"),
+    # "Covariate Associations": [
+    #     st.Page("pages/1_covariate_associations.py"),
+    #     st.Page("pages/2_covariates_volcano.py")
+    # ],
+    "Sleep-ldsc Visualizations": [
+        # st.Page("pages/4_sleep_prs_volcano.py"),
         st.Page("pages/3_sleep_ldsc_volcano.py"),
     ]
 }, position="sidebar")
