@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 
 st.set_page_config(page_title="Wavelet Visualizer", layout="wide")
-st.title("Wavelet ↔ Covariate / Sleep-PRS / LDSC Explorer")
+st.title("Wavelet Visual Explorer")
 
 st.write("""
 Welcome! Use the sidebar to navigate to specific visualizations.
@@ -38,7 +38,7 @@ st.cache_data.clear()
 
 # --- LDSC results ---
 if "df_ldsc_sleep" not in st.session_state:
-    csv_path_ldsc = '/data/rg_summary_all.tsv'  # adjust to your repo path
+    csv_path_ldsc = 'data/rg_summary_all.tsv' 
     df_ldsc_sleep = pd.read_csv(csv_path_ldsc, sep="\t")
     df_ldsc_sleep['neg_log10_p'] = -np.log10(df_ldsc_sleep['p'].clip(lower=1e-300))
     df_ldsc_sleep['abs_rg'] = df_ldsc_sleep['rg'].abs()
