@@ -5,7 +5,7 @@ An interactive Streamlit dashboard to explore associations between wavelet-deriv
 
 This app integrates multiple statistical analyses and visual tools to help interpret the relationship between genetic data and ECG wavelet phenotypes.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://wavelet-covs.streamlit.app/)
 
 ### How to run it on your own machine
 
