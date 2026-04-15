@@ -68,7 +68,32 @@ else:
 
 # Table of top significant correlations
 st.header("Top Significant Genetic Correlations")
-n_table = st.slider("Number of rows to display", 10, 200, 50)
+#n_table = st.slider("Number of rows to display", 10, 200, 50)
+# Table of top significant correlations
+st.header("Top Significant Genetic Correlations")
+if not df_filtered.empty:
+    max_rows = len(df_filtered)
+    show_all = st.checkbox("Show all rows", value=False)
+    if show_all:
+        n_table = max_rows
+    else:
+        n_table = st.slider(
+            "Number of rows to display",
+            min_value=10,
+            max_value=max_rows,
+            value=min(50, max_rows)
+        )
+    top_table = df_filtered.nlargest(n_table, "neg_log10_p")[
+        ['trait', 'wave_feature', 'rg', 'p', 'neg_log10_p']
+    ]
+    st.caption(f"Showing {n_table} of {max_rows} filtered rows")
+    st.dataframe(
+        top_table,
+        use_container_width=True,
+        height=min(35 * n_table + 38, 800)  # remove this line if you want infinite height instead of scroll
+    )
+else:
+    st.warning("No significant results available.")
 if not df_filtered.empty:
     top_table = df_filtered.nlargest(n_table, "neg_log10_p")[['trait', 'wave_feature', 'rg', 'p', 'neg_log10_p']]
     st.dataframe(top_table, use_container_width=True)
